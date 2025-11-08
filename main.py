@@ -57,8 +57,6 @@ def menu_category(menus):
     print("===========================================")
 
 
-# menu_category(menus)
-
 def sub_menu_category(menus, cat_menu):
     if cat_menu == "FOOD":
         name = "FOOD"
@@ -88,6 +86,78 @@ def sub_menu_category(menus, cat_menu):
         print("The Menu is Not Valid")
 
 
-sub_menu_category(menus, "FOOD")
-sub_menu_category(menus, "BEVERAGE")
-sub_menu_category(menus, "DESSERT")
+def lists_food_menu(menus, sub_menu):
+    if sub_menu == "CHICKEN":
+        for key, value in menus["FOOD"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    elif sub_menu == "FISH":
+        for key, value in menus["FOOD"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    elif sub_menu == "MEAT":
+        for key, value in menus["FOOD"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    else:
+        print("The Number is Not Valid")
+
+
+def lists_beverage_menu(menus, sub_menu):
+    if sub_menu == "JUICE":
+        for key, value in menus["BEVERAGE"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    elif sub_menu == "MOCKTAIL":
+        for key, value in menus["BEVERAGE"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    elif sub_menu == "COFFEE":
+        for key, value in menus["BEVERAGE"].items():
+            print("===============================================")
+            print(f"|{key:^45}|")
+            print("===============================================")
+            for name, harga in value.items():
+                print(f"|{name:^30} Rp. {harga:>10}|")
+            print("===============================================")
+    else:
+        print("The Number is Not Valid")
+
+
+def lists_dessert_menu(menus, sub_menu):
+    if sub_menu == "DESSERT":
+        print("===============================================")
+        print(f"|{sub_menu:^45}|")
+        print("===============================================")
+        for key, value in menus["DESSERT"].items():
+            print(f"|{key:^30} Rp. {value:>10}|")
+        print("===============================================")
+    else:
+        print("The Number is Not Valid")
+
+
+# menu_category(menus)
+# sub_menu_category(menus, "FOOD")
+lists_food_menu(menus, "CHICKEN")
+# lists_beverage_menu(menus, "JUICE")
+# lists_dessert_menu(menus, "DESSERT")
