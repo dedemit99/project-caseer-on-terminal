@@ -60,7 +60,7 @@ def menu_category(menus):
 
 # funcion of display sub menu
 def sub_menu_category(num):
-    if num == "1":
+    if num == 1:
         name = "FOOD"
         x = 0
         print("========================")
@@ -70,7 +70,7 @@ def sub_menu_category(num):
             print(f"|{x + 1}.{key:^20}|")
             x += 1
         print("========================")
-    elif num == "2":
+    elif num == 2:
         name = "BEVERAGE"
         x = 0
         print("========================")
@@ -80,7 +80,7 @@ def sub_menu_category(num):
             print(f"|{x + 1}.{key:^20}|")
             x += 1
         print("========================")
-    elif num == "3":
+    elif num == 3:
         lists_dessert_menu(num)
     else:
         print("The Menu is Not Valid")
@@ -88,125 +88,176 @@ def sub_menu_category(num):
 
 # function for display Food menu
 def lists_food_menu(num):
-    food_menu = menus["FOOD"]
-    if num == "1":
-        if "CHICKEN" in food_menu:
-            value = food_menu["CHICKEN"]
-            x = 0
-            print("=================================================")
-            print(f"|{"CHICKEN":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
-    elif num == "2":
-        if "FISH" in food_menu:
-            value = food_menu["FISH"]
-            x = 0
-            print("=================================================")
-            print(f"|{"FISH":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
-    elif num == "3":
-        if "MEAT" in food_menu:
-            value = food_menu["MEAT"]
-            x = 0
-            print("=================================================")
-            print(f"|{"MEAT":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
+    if num == 1:
+        food_menu = menus["FOOD"]["CHICKEN"]
+        value = list(food_menu.items())
+        print("=================================================")
+        print(f"|{"CHICKEN":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
+    elif num == 2:
+        food_menu = menus["FOOD"]["FISH"]
+        value = list(food_menu.items())
+        print("=================================================")
+        print(f"|{"FISH":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
+    elif num == 3:
+        food_menu = menus["FOOD"]["MEAT"]
+        value = list(food_menu.items())
+        print("=================================================")
+        print(f"|{"MEAT":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
     else:
         print("The Number is Not Valid")
 
 
 # function for display beverage menu
 def lists_beverage_menu(num):
-    beverage_menu = menus["BEVERAGE"]
-    if num == "1":
-        if "JUICE" in beverage_menu:
-            value = beverage_menu["JUICE"]
-            x = 0
-            print("=================================================")
-            print(f"|{"JUICE":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
-    elif num == "2":
-        if "MOCKTAIL" in beverage_menu:
-            value = beverage_menu["MOCKTAIL"]
-            x = 0
-            print("=================================================")
-            print(f"|{"MOCKTAIL":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
-    elif num == "3":
-        if "COFFEE" in beverage_menu:
-            value = beverage_menu["COFFEE"]
-            x = 0
-            print("=================================================")
-            print(f"|{"COFFEE":^47}|")
-            print("=================================================")
-            for name, harga in value.items():
-                print(f"|{x + 1}.{name:^30} Rp. {harga:>10}|")
-                x += 1
-            print("=================================================")
+    if num == 1:
+        beverage_menu = menus["BEVERAGE"]["JUICE"]
+        value = list(beverage_menu.items())
+        print("=================================================")
+        print(f"|{"JUICE":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
+    elif num == 2:
+        beverage_menu = menus["BEVERAGE"]["MOCKTAIL"]
+        value = list(beverage_menu.items())
+        print("=================================================")
+        print(f"|{"MOCKTAIL":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
+    elif num == 3:
+        beverage_menu = menus["BEVERAGE"]["COFFEE"]
+        value = list(beverage_menu.items())
+        print("=================================================")
+        print(f"|{"COFFEE":^47}|")
+        print("=================================================")
+        for i, (name, harga) in enumerate(value, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, name, harga))
+        print("=================================================")
     else:
         print("The Number is Not Valid")
 
 
 # function for display dessert menu
 def lists_dessert_menu(num):
-    if num == "3":
-        x = 0
+    if num == 3:
+        dessesrt_menu = list(menus["DESSERT"].items())
         print("=================================================")
         print(f"|{"DESSERT":^47}|")
         print("=================================================")
-        for key, value in menus["DESSERT"].items():
-            print(f"|{x + 1}.{key:^30} Rp. {value:>10}|")
-            x += 1
+        for i, (key, value) in enumerate(dessesrt_menu, start=1):
+            print("|{}.{:^30} Rp. {:>10}|".format(i, key, value))
         print("=================================================")
     else:
         print("The Number is Not Valid")
 
 
 menu_category(menus)
-input_menu_category = input("Please choise the category: ")
-if input_menu_category == "1":
+
+# list for holding the data
+cart = []
+
+input_menu_category = int(input("Please choise the category: "))
+if input_menu_category == 1:
     sub_menu_category(input_menu_category)
-    input_sub_menu = input("Please Choise the menu that you like: ")
-    if input_sub_menu == "1":
+    input_sub_menu = int(input("Please Choise the menu that you like: "))
+    if input_sub_menu == 1:
         lists_food_menu(input_sub_menu)
-    elif input_sub_menu == "2":
+        while True:
+            items = list(menus["FOOD"]["CHICKEN"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
+    elif input_sub_menu == 2:
         lists_food_menu(input_sub_menu)
-    elif input_sub_menu == "3":
+        while True:
+            items = list(menus["FOOD"]["FISH"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
+    elif input_sub_menu == 3:
         lists_food_menu(input_sub_menu)
+        while True:
+            items = list(menus["FOOD"]["MEAT"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
     else:
         print("Input is not valid")
-elif input_menu_category == "2":
+elif input_menu_category == 2:
     sub_menu_category(input_menu_category)
-    input_sub_menu = input("Please Choise the menu that you like: ")
-    if input_sub_menu == "1":
+    input_sub_menu = int(input("Please Choise the menu that you like: "))
+    if input_sub_menu == 1:
         lists_beverage_menu(input_sub_menu)
-    elif input_sub_menu == "2":
+        while True:
+            items = list(menus["BEVERAGE"]["JUICE"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
+    elif input_sub_menu == 2:
         lists_beverage_menu(input_sub_menu)
-    elif input_sub_menu == "3":
+        while True:
+            items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
+    elif input_sub_menu == 3:
         lists_beverage_menu(input_sub_menu)
+        while True:
+            items = list(menus["BEVERAGE"]["COFFEE"].items())
+            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            selected_name, selected_price = items[add_cart]
+            cart.append((selected_name, selected_price))
+            print(cart)
+            ext = input("Do you want to continue or not (y/n): ").lower()
+            if ext == "y":
+                break
     else:
         print("Input is not valid")
-elif input_menu_category == "3":
+elif input_menu_category == 3:
     sub_menu_category(input_menu_category)
-    input_sub_menu = input("Please Choise the menu that you like: ")
+    while True:
+        items = list(menus["DESSERT"].items())
+        add_cart = int(input("Please choise the menu that you prefer: "))-1
+        selected_name, selected_price = items[add_cart]
+        cart.append((selected_name, selected_price))
+        print(cart)
+        ext = input("Do you want to continue or not (y/n): ").lower()
+        if ext == "y":
+            break
 else:
     print("Input not valid")
