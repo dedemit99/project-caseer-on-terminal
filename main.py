@@ -46,7 +46,7 @@ menus = {
 }
 
 # function for displat menu category
-def menu_category(menus):
+def menu_category():
     print('''
 ===========================================
 | Welcome To The Milion Bean Cafe n Resto |
@@ -166,12 +166,14 @@ def lists_dessert_menu(num):
         print("The Number is Not Valid")
 
 
-menu_category(menus)
+# Display the menu
+menu_category()
 
 # list for holding the data
 cart = []
 
 input_menu_category = int(input("Please choise the category: "))
+
 if input_menu_category == 1:
     sub_menu_category(input_menu_category)
     input_sub_menu = int(input("Please Choise the menu that you like: "))
@@ -184,7 +186,7 @@ if input_menu_category == 1:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     elif input_sub_menu == 2:
         lists_food_menu(input_sub_menu)
@@ -195,7 +197,7 @@ if input_menu_category == 1:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     elif input_sub_menu == 3:
         lists_food_menu(input_sub_menu)
@@ -206,7 +208,7 @@ if input_menu_category == 1:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     else:
         print("Input is not valid")
@@ -222,7 +224,7 @@ elif input_menu_category == 2:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     elif input_sub_menu == 2:
         lists_beverage_menu(input_sub_menu)
@@ -233,7 +235,7 @@ elif input_menu_category == 2:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     elif input_sub_menu == 3:
         lists_beverage_menu(input_sub_menu)
@@ -244,7 +246,7 @@ elif input_menu_category == 2:
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "y":
+            if ext == "n":
                 break
     else:
         print("Input is not valid")
@@ -257,7 +259,7 @@ elif input_menu_category == 3:
         cart.append((selected_name, selected_price))
         print(cart)
         ext = input("Do you want to continue or not (y/n): ").lower()
-        if ext == "y":
+        if ext == "n":
             break
 else:
     print("Input not valid")
