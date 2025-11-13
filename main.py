@@ -166,43 +166,109 @@ def lists_dessert_menu(num):
         print("The Number is Not Valid")
 
 
-# Display the menu
-menu_category()
-
 # list for holding the data
 cart = []
 
-input_menu_category = int(input("Please choise the category: "))
 
-if input_menu_category == 1:
-    sub_menu_category(input_menu_category)
-    input_sub_menu = int(input("Please Choise the menu that you like: "))
-    if input_sub_menu == 1:
-        lists_food_menu(input_sub_menu)
+def billing(cart):
+    total_price_before_tax = 0
+    tax = total_price_before_tax * 0.10
+    total_price = total_price_before_tax + tax
+    for items in cart:
+        menus, price = items
+        total_price_before_tax += price
+        return f'''
+                    {menus} : {total_price}
+                '''
+
+
+while True:
+    # Display the menu
+    menu_category()
+
+    input_menu_category = int(input("Please choise the category: "))
+
+    if input_menu_category == 1:
+        sub_menu_category(input_menu_category)
+        input_sub_menu = int(input("Please Choise the menu that you like: "))
+        if input_sub_menu == 1:
+            lists_food_menu(input_sub_menu)
+            while True:
+                items = list(menus["FOOD"]["CHICKEN"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    billing(cart)
+                    break
+        elif input_sub_menu == 2:
+            lists_food_menu(input_sub_menu)
+            while True:
+                items = list(menus["FOOD"]["FISH"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    break
+        elif input_sub_menu == 3:
+            lists_food_menu(input_sub_menu)
+            while True:
+                items = list(menus["FOOD"]["MEAT"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    break
+        else:
+            print("Input is not valid")
+    elif input_menu_category == 2:
+        sub_menu_category(input_menu_category)
+        input_sub_menu = int(input("Please Choise the menu that you like: "))
+        if input_sub_menu == 1:
+            lists_beverage_menu(input_sub_menu)
+            while True:
+                items = list(menus["BEVERAGE"]["JUICE"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    break
+        elif input_sub_menu == 2:
+            lists_beverage_menu(input_sub_menu)
+            while True:
+                items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    break
+        elif input_sub_menu == 3:
+            lists_beverage_menu(input_sub_menu)
+            while True:
+                items = list(menus["BEVERAGE"]["COFFEE"].items())
+                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                selected_name, selected_price = items[add_cart]
+                cart.append((selected_name, selected_price))
+                print(cart)
+                ext = input("Do you want to continue or not (y/n): ").lower()
+                if ext == "n":
+                    break
+        else:
+            print("Input is not valid")
+    elif input_menu_category == 3:
+        sub_menu_category(input_menu_category)
         while True:
-            items = list(menus["FOOD"]["CHICKEN"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
-            selected_name, selected_price = items[add_cart]
-            cart.append((selected_name, selected_price))
-            print(cart)
-            ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "n":
-                break
-    elif input_sub_menu == 2:
-        lists_food_menu(input_sub_menu)
-        while True:
-            items = list(menus["FOOD"]["FISH"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
-            selected_name, selected_price = items[add_cart]
-            cart.append((selected_name, selected_price))
-            print(cart)
-            ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "n":
-                break
-    elif input_sub_menu == 3:
-        lists_food_menu(input_sub_menu)
-        while True:
-            items = list(menus["FOOD"]["MEAT"].items())
+            items = list(menus["DESSERT"].items())
             add_cart = int(input("Please choise the menu that you prefer: "))-1
             selected_name, selected_price = items[add_cart]
             cart.append((selected_name, selected_price))
@@ -211,55 +277,4 @@ if input_menu_category == 1:
             if ext == "n":
                 break
     else:
-        print("Input is not valid")
-elif input_menu_category == 2:
-    sub_menu_category(input_menu_category)
-    input_sub_menu = int(input("Please Choise the menu that you like: "))
-    if input_sub_menu == 1:
-        lists_beverage_menu(input_sub_menu)
-        while True:
-            items = list(menus["BEVERAGE"]["JUICE"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
-            selected_name, selected_price = items[add_cart]
-            cart.append((selected_name, selected_price))
-            print(cart)
-            ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "n":
-                break
-    elif input_sub_menu == 2:
-        lists_beverage_menu(input_sub_menu)
-        while True:
-            items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
-            selected_name, selected_price = items[add_cart]
-            cart.append((selected_name, selected_price))
-            print(cart)
-            ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "n":
-                break
-    elif input_sub_menu == 3:
-        lists_beverage_menu(input_sub_menu)
-        while True:
-            items = list(menus["BEVERAGE"]["COFFEE"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
-            selected_name, selected_price = items[add_cart]
-            cart.append((selected_name, selected_price))
-            print(cart)
-            ext = input("Do you want to continue or not (y/n): ").lower()
-            if ext == "n":
-                break
-    else:
-        print("Input is not valid")
-elif input_menu_category == 3:
-    sub_menu_category(input_menu_category)
-    while True:
-        items = list(menus["DESSERT"].items())
-        add_cart = int(input("Please choise the menu that you prefer: "))-1
-        selected_name, selected_price = items[add_cart]
-        cart.append((selected_name, selected_price))
-        print(cart)
-        ext = input("Do you want to continue or not (y/n): ").lower()
-        if ext == "n":
-            break
-else:
-    print("Input not valid")
+        print("Input not valid")
