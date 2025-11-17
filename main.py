@@ -45,8 +45,8 @@ menus = {
     }
 }
 
-# function for displat menu category
-def menu_category():
+
+def menu_category():  # function for displat menu category
     print('''
 ===========================================
 | Welcome To The Milion Bean Cafe n Resto |
