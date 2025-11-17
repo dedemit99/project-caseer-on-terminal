@@ -170,16 +170,43 @@ def lists_dessert_menu(num):
 cart = []
 
 
-def billing(cart):
-    total_price_before_tax = 0
-    tax = total_price_before_tax * 0.10
-    total_price = total_price_before_tax + tax
+def tax(total_bill):
+    tax = total_bill + (total_bill * 0.10)
+    return tax
+
+
+def discounts(items, total_bill):
+    discount = 0
+    if items > 15 and total_bill >= 500000:
+        discount = 0.20
+    elif items > 10 and total_bill >= 300000:
+        discount = 0.10
+    else:
+        print("You don't have any discount today")
+
+    return total_bill * discount
+
+
+def bill_summary():
+    summary = {}
     for items in cart:
-        menus, price = items
-        total_price_before_tax += price
-        return f'''
-                    {menus} : {total_price}
-                '''
+        menu, price = items
+        if menu not in summary:
+            summary[menu] = {
+                "qty": 1,
+                "price": price,
+                "total": price
+            }
+        else:
+            summary[menu]["qty"] += 1
+            summary[menu]["total"] = summary[menu]["qty"] * price
+    return summary
+
+
+def billing():
+    sumary = bill_summary()
+    for i,(menu, items) in enumerate(sumary.items(), start=1):
+        print(i, menu, items["qty", items["total"]])
 
 
 while True:
@@ -203,6 +230,7 @@ while True:
                 if ext == "n":
                     billing(cart)
                     break
+                billing()
         elif input_sub_menu == 2:
             lists_food_menu(input_sub_menu)
             while True:
