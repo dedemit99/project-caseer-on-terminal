@@ -4,55 +4,57 @@ menus = {
             "Crispy Melted Chicken": 69000,
             "Garlic Chicken Steak": 59000,
             "Herb Butter Chicken": 75000,
-            "Chicken Cordon Blue": 69000
+            "Chicken Cordon Blue": 69000,
         },
         "FISH": {
             "Fish and Chips": 69000,
             "Garlic Blackpaper Fish": 69000,
             "Sambal Matah Fish": 69000,
-            "Creamy Salmon": 129000
+            "Creamy Salmon": 129000,
         },
         "MEAT": {
             "Truffle Butter Medallion": 165000,
             "Beef Fondue": 159000,
             "Smoked Steak": 125000,
-            "Truffle Steak": 125000
-        }
+            "Truffle Steak": 125000,
+        },
     },
     "BEVERAGE": {
         "JUICE": {
             "Green Healty Juice": 35000,
             "Rainbow Juice": 38000,
-            "Strowberry Smoothies": 38000
+            "Strowberry Smoothies": 38000,
         },
         "MOCKTAIL": {
             "Ginger Marry Mojito": 38000,
             "Strowbarry Mojito": 38000,
-            "Lychee Mojito": 38000
+            "Lychee Mojito": 38000,
         },
         "COFFEE": {
             "Americano": 28000,
             "Cappucino": 35000,
             "Hot Latte": 30000,
-            "Macadamia Brulee": 40000
-        }
+            "Macadamia Brulee": 40000,
+        },
     },
     "DESSERT": {
         "Banana Split": 49000,
         "Dadar Gulung Pandan": 35000,
         "Banana Friters": 45000,
-        "Lava Tiramisu Toast": 49000
-    }
+        "Lava Tiramisu Toast": 49000,
+    },
 }
 
 
 def menu_category():  # function for displat menu category
-    print('''
+    print(
+        """
 ===========================================
 | Welcome To The Milion Bean Cafe n Resto |
 |       Please Choose The Category        |
 ===========================================
-        '''.strip())
+        """.strip()
+    )
     for i, list in enumerate(menus):
         print(f"|{i+1}.{list:^38} |")
     print("===========================================")
@@ -192,21 +194,22 @@ def bill_summary():
     for items in cart:
         menu, price = items
         if menu not in summary:
-            summary[menu] = {
-                "qty": 1,
-                "price": price,
-                "total": price
-            }
+            summary[menu] = {"qty": 1, "price": price, "total": price}
         else:
             summary[menu]["qty"] += 1
             summary[menu]["total"] = summary[menu]["qty"] * price
+
     return summary
 
 
 def billing():
     sumary = bill_summary()
-    for i,(menu, items) in enumerate(sumary.items(), start=1):
-        print(i, menu, items["qty", items["total"]])
+    for i, (menu, items) in enumerate(sumary.items(), start=1):
+        discount = discounts(items["qty"], items["total"])
+        print(f"{i}. {menu} : {items["qty"]} Rp. {items["total"]}")
+        print(
+            f"Congratulation you have an discount Rp. {discount}, so the total is Rp. {items['total'] - discount}"
+        )
 
 
 while True:
@@ -222,36 +225,37 @@ while True:
             lists_food_menu(input_sub_menu)
             while True:
                 items = list(menus["FOOD"]["CHICKEN"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
-                    billing(cart)
+                    billing()
                     break
-                billing()
         elif input_sub_menu == 2:
             lists_food_menu(input_sub_menu)
             while True:
                 items = list(menus["FOOD"]["FISH"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
+                    billing()
                     break
         elif input_sub_menu == 3:
             lists_food_menu(input_sub_menu)
             while True:
                 items = list(menus["FOOD"]["MEAT"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
+                    billing()
                     break
         else:
             print("Input is not valid")
@@ -262,34 +266,37 @@ while True:
             lists_beverage_menu(input_sub_menu)
             while True:
                 items = list(menus["BEVERAGE"]["JUICE"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
+                    billing()
                     break
         elif input_sub_menu == 2:
             lists_beverage_menu(input_sub_menu)
             while True:
                 items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
+                    billing()
                     break
         elif input_sub_menu == 3:
             lists_beverage_menu(input_sub_menu)
             while True:
                 items = list(menus["BEVERAGE"]["COFFEE"].items())
-                add_cart = int(input("Please choise the menu that you prefer: "))-1
+                add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
                 print(cart)
                 ext = input("Do you want to continue or not (y/n): ").lower()
                 if ext == "n":
+                    billing()
                     break
         else:
             print("Input is not valid")
@@ -297,12 +304,13 @@ while True:
         sub_menu_category(input_menu_category)
         while True:
             items = list(menus["DESSERT"].items())
-            add_cart = int(input("Please choise the menu that you prefer: "))-1
+            add_cart = int(input("Please choise the menu that you prefer: ")) - 1
             selected_name, selected_price = items[add_cart]
             cart.append((selected_name, selected_price))
             print(cart)
             ext = input("Do you want to continue or not (y/n): ").lower()
             if ext == "n":
+                billing()
                 break
     else:
         print("Input not valid")
