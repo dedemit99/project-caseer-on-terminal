@@ -229,7 +229,7 @@ def billing():
         print(54 * "=")
     else:
         print(54 * "=")
-        print(f"| Total {"Rp.":>32} {total_price:>10} |")
+        print(f"| Total {"Rp.":>33} {total_price:>10} |")
         print(54 * "=")
 
 
