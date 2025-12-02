@@ -242,10 +242,12 @@ while True:
     input_menu_category = int(input("Please choise the category: "))
 
     while True:
+        # Option 1 for FOOD
         if input_menu_category == 1:
             sub_menu_category(input_menu_category)
             input_sub_menu = int(input("Please Choise the menu that you like: "))
 
+            # Option 1 for Chicken
             if input_sub_menu == 1:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["CHICKEN"].items())
@@ -254,6 +256,7 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 2 for Fish
             elif input_sub_menu == 2:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["FISH"].items())
@@ -262,6 +265,7 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 3 for Meat
             elif input_sub_menu == 3:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["MEAT"].items())
@@ -270,15 +274,19 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 4 for exit
             elif input_sub_menu == 4:
                 break
 
             else:
                 print("Input is not valid")
 
+        # Option 2 for Beverage
         elif input_menu_category == 2:
             sub_menu_category(input_menu_category)
             input_sub_menu = int(input("Please Choise the menu that you like: "))
+
+            # Option 1 for Juice
             if input_sub_menu == 1:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["JUICE"].items())
@@ -287,6 +295,7 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 2 for Moctail
             elif input_sub_menu == 2:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
@@ -295,6 +304,7 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 3 for Coffee
             elif input_sub_menu == 3:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["COFFEE"].items())
@@ -303,11 +313,13 @@ while True:
                 cart.append((selected_name, selected_price))
                 print(cart)
 
+            # Option 4 for exit
             elif input_sub_menu == 4:
                 break
             else:
                 print("Input is not valid")
 
+        # Option 3 for Dessert
         elif input_menu_category == 3:
             sub_menu_category(input_menu_category)
             items = list(menus["DESSERT"].items())
@@ -317,12 +329,15 @@ while True:
             print(cart)
             break
 
+        # Option 4 for billing
         elif input_menu_category == 4:
             billing()
             running = False
             break
+
         else:
             print("Input not valid")
 
+    # Condition for exit the program
     if not running:
         break
