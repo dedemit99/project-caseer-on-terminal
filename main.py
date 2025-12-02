@@ -208,9 +208,9 @@ def bill_summary():
 
 # function for billing
 def billing():
-    print(53 * "=")
-    print(f"| {"BILLING":^49} |")
-    print(53 * "=")
+    print(54 * "=")
+    print(f"| {"THANK YOU FOR COMING":^50} |")
+    print(54 * "=")
 
     sumary = bill_summary()
     total_price = 0
@@ -219,17 +219,18 @@ def billing():
         discount = discounts(total_price)
         total_price += items["total"]
 
-        print(f"| {i}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
+        print(f"| {i:<2}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
 
     if discount is not 0:
-        print(53 * "=")
+        print(54 * "=")
         print(
-            f"Congratulation you have an discount Rp. {discount}, so the total is Rp. {total_price - discount}"
+            f"| Congratulation you have an discount {"Rp.":>2} {discount:>10} | \n| Total {"Rp.":>33} {total_price - discount:>10} |"
         )
+        print(54 * "=")
     else:
-        print(53 * "=")
-        print(f"| Total {"Rp.":>32} {total_price:>10} |")
-        print(53 * "=")
+        print(54 * "=")
+        print(f"| Total {"Rp.":>33} {total_price:>10} |")
+        print(54 * "=")
 
 
 # Flag for exit the flow
@@ -242,87 +243,95 @@ while True:
     input_menu_category = int(input("Please choise the category: "))
 
     while True:
+        # Option 1 for FOOD
         if input_menu_category == 1:
             sub_menu_category(input_menu_category)
             input_sub_menu = int(input("Please Choise the menu that you like: "))
 
+            # Option 1 for Chicken
             if input_sub_menu == 1:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["CHICKEN"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 2 for Fish
             elif input_sub_menu == 2:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["FISH"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 3 for Meat
             elif input_sub_menu == 3:
                 lists_food_menu(input_sub_menu)
                 items = list(menus["FOOD"]["MEAT"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 4 for exit
             elif input_sub_menu == 4:
                 break
 
             else:
                 print("Input is not valid")
 
+        # Option 2 for Beverage
         elif input_menu_category == 2:
             sub_menu_category(input_menu_category)
             input_sub_menu = int(input("Please Choise the menu that you like: "))
+
+            # Option 1 for Juice
             if input_sub_menu == 1:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["JUICE"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 2 for Moctail
             elif input_sub_menu == 2:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["MOCKTAIL"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 3 for Coffee
             elif input_sub_menu == 3:
                 lists_beverage_menu(input_sub_menu)
                 items = list(menus["BEVERAGE"]["COFFEE"].items())
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
+            # Option 4 for exit
             elif input_sub_menu == 4:
                 break
             else:
                 print("Input is not valid")
 
+        # Option 3 for Dessert
         elif input_menu_category == 3:
             sub_menu_category(input_menu_category)
             items = list(menus["DESSERT"].items())
             add_cart = int(input("Please choise the menu that you prefer: ")) - 1
             selected_name, selected_price = items[add_cart]
             cart.append((selected_name, selected_price))
-            print(cart)
             break
 
+        # Option 4 for billing
         elif input_menu_category == 4:
             billing()
             running = False
             break
+
         else:
             print("Input not valid")
 
+    # Condition for exit the program
     if not running:
         break
