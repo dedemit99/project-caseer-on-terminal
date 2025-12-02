@@ -255,7 +255,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 2 for Fish
             elif input_sub_menu == 2:
@@ -264,7 +263,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 3 for Meat
             elif input_sub_menu == 3:
@@ -273,7 +271,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 4 for exit
             elif input_sub_menu == 4:
@@ -294,7 +291,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 2 for Moctail
             elif input_sub_menu == 2:
@@ -303,7 +299,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 3 for Coffee
             elif input_sub_menu == 3:
@@ -312,7 +307,6 @@ while True:
                 add_cart = int(input("Please choise the menu that you prefer: ")) - 1
                 selected_name, selected_price = items[add_cart]
                 cart.append((selected_name, selected_price))
-                print(cart)
 
             # Option 4 for exit
             elif input_sub_menu == 4:
@@ -327,7 +321,6 @@ while True:
             add_cart = int(input("Please choise the menu that you prefer: ")) - 1
             selected_name, selected_price = items[add_cart]
             cart.append((selected_name, selected_price))
-            print(cart)
             break
 
         # Option 4 for billing
