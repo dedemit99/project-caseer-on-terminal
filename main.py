@@ -1,3 +1,5 @@
+from datetime import datetime
+
 menus = {
     "FOOD": {
         "CHICKEN": {
@@ -177,19 +179,23 @@ cart = []
 
 # function for tax count
 def tax(total_bill):
-    tax = total_bill + (total_bill * 0.10)
+    tax = total_bill * 0.10
     return tax
 
 
 # function  for discount count
 def discounts(total_bill):
     discount = 0
-    if total_bill > 750000:
-        discount = 0.20
-    elif total_bill > 500000:
-        discount = 0.10
+    today = datetime.today().strftime("%A")
+    if today in ("Monday", "Sunday"):
+        discount = 0
+    else:
+        if total_bill > 750000:
+            discount = 0.20
+        elif total_bill > 500000:
+            discount = 0.10
 
-    return total_bill * discount
+    return discount
 
 
 # function for order summary
@@ -215,21 +221,33 @@ def billing():
     sumary = bill_summary()
     total_price = 0
     discount = 0
+    today = datetime.today()
+
     for i, (menu, items) in enumerate(sumary.items(), start=1):
-        discount = discounts(total_price)
         total_price += items["total"]
+        discount = discounts(total_price)
 
         print(f"| {i:<2}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
 
     if discount is not 0:
         print(54 * "=")
+        print(f"| Tax & Service {"Rp.":>25} {int(tax(total_price)):>10} |")
         print(
-            f"| Congratulation you have an discount {"Rp.":>2} {discount:>10} | \n| Total {"Rp.":>33} {total_price - discount:>10} |"
+            f"| Discount {int(discount*100)}% {"Rp.":>26} {int(total_price*discount):>10} | \n| Total {"Rp.":>33} {int((total_price - (total_price * discount)) + tax(total_price)):>10} |"
         )
+        print(54 * "=")
+        print(f"| {today.strftime("%A"):^50} |")
+        print(f"| {today.strftime("%Y-%m-%d"):^50} |")
+        print(f"| {today.strftime("%H:%M:%S"):^50} |")
         print(54 * "=")
     else:
         print(54 * "=")
-        print(f"| Total {"Rp.":>33} {total_price:>10} |")
+        print(f"| Tax & Service {"Rp.":>25} {int(tax(total_price)):>10} |")
+        print(f"| Total {"Rp.":>33} {int(total_price + tax(total_price)):>10} |")
+        print(54 * "=")
+        print(f"| {today.strftime("%A"):^50} |")
+        print(f"| {today.strftime("%Y-%m-%d"):^50} |")
+        print(f"| {today.strftime("%H:%M:%S"):^50} |")
         print(54 * "=")
 
 
