@@ -208,9 +208,9 @@ def bill_summary():
 
 # function for billing
 def billing():
-    print(53 * "=")
-    print(f"| {"BILLING":^49} |")
-    print(53 * "=")
+    print(54 * "=")
+    print(f"| {"THANK YOU FOR COMING":^50} |")
+    print(54 * "=")
 
     sumary = bill_summary()
     total_price = 0
@@ -219,17 +219,18 @@ def billing():
         discount = discounts(total_price)
         total_price += items["total"]
 
-        print(f"| {i}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
+        print(f"| {i:<2}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
 
     if discount is not 0:
-        print(53 * "=")
+        print(54 * "=")
         print(
-            f"Congratulation you have an discount Rp. {discount}, so the total is Rp. {total_price - discount}"
+            f"| Congratulation you have an discount {"Rp.":>2} {discount:>10} | \n| Total {"Rp.":>33} {total_price - discount:>10} |"
         )
+        print(54 * "=")
     else:
-        print(53 * "=")
+        print(54 * "=")
         print(f"| Total {"Rp.":>32} {total_price:>10} |")
-        print(53 * "=")
+        print(54 * "=")
 
 
 # Flag for exit the flow
