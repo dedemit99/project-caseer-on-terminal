@@ -182,11 +182,11 @@ def tax(total_bill):
 
 
 # function  for discount count
-def discounts(items, total_bill):
+def discounts(total_bill):
     discount = 0
-    if items > 15 and total_bill >= 500000:
+    if total_bill > 750000:
         discount = 0.20
-    elif items > 10 and total_bill >= 300000:
+    elif total_bill > 500000:
         discount = 0.10
 
     return total_bill * discount
@@ -208,22 +208,32 @@ def bill_summary():
 
 # function for billing
 def billing():
+    print(53 * "=")
+    print(f"| {"BILLING":^49} |")
+    print(53 * "=")
+
     sumary = bill_summary()
     total_price = 0
-    discount = None
+    discount = 0
     for i, (menu, items) in enumerate(sumary.items(), start=1):
-        discount = discounts(items["qty"], items["total"])
+        discount = discounts(total_price)
         total_price += items["total"]
 
-        print(f"{i}. {menu} : {items["qty"]} Rp. {items["total"]}")
+        print(f"| {i}. {menu:25} : {items["qty"]:>3} Rp. {items["total"]:>10} |")
 
-    if discount is None:
+    if discount is not 0:
+        print(53 * "=")
         print(
-            f"Congratulation you have an discount 10% Rp. {discount}, so the total is Rp. {total_price - discount}"
+            f"Congratulation you have an discount Rp. {discount}, so the total is Rp. {total_price - discount}"
         )
     else:
-        print(f"The total is Rp. {total_price}")
+        print(53 * "=")
+        print(f"| Total {"Rp.":>32} {total_price:>10} |")
+        print(53 * "=")
 
+
+# Flag for exit the flow
+running = True
 
 while True:
     # Display the menu
@@ -309,7 +319,10 @@ while True:
 
         elif input_menu_category == 4:
             billing()
+            running = False
             break
+        else:
+            print("Input not valid")
+
+    if not running:
         break
-        # else:
-        #     print("Input not valid")
